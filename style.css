@@ -112,11 +112,36 @@ body{
   text-align:center;
 }
 
-/* LOGO SUPERIOR */
+
+
+
+/* ======================================
+   LOGO SUPERIOR BENDITA SELVA
+====================================== */
+
+.brand{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:40px;
+}
 
 .brand img{
-  width:180px;
-  margin-bottom:15px;
+  width:min(98vw,1100px);
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:auto;
+
+  filter:
+    drop-shadow(0 8px 15px rgba(0,0,0,.35))
+    drop-shadow(0 0 25px rgba(223,159,67,.15));
+
+  transition:.3s ease;
+}
+
+.brand img:hover{
+  transform:scale(1.02);
 }
 
 .brand h1{
@@ -136,6 +161,8 @@ body{
   font-size:18px;
   color:#d9dbd8;
 }
+
+
 
 .form-box{
   margin-top:30px;
@@ -345,8 +372,9 @@ body{
     width:95px;
   }
 
-  .brand img{
-    width:140px;
-  }
+ .brand img{
+  width:95vw;
+  max-width:650px;
+}
 
 }
