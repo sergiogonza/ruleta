@@ -132,26 +132,26 @@ if(popup){
 
   }else{
 
-    const check =
-    document.getElementById(
-      "acceptPolicy"
-    );
+const check = document.querySelector("#acceptPolicy");
+const btn = document.querySelector("#acceptPolicyBtn");
 
-    const btn =
-    document.getElementById(
-      "acceptPolicyBtn"
-    );
+console.log("CHECK:", check);
+console.log("BTN:", btn);
 
-    if(check && btn){
+if(check && btn){
 
-      check.addEventListener(
-        "change",
-        () => {
-          btn.disabled =
-          !check.checked;
-        }
-      );
+  check.onclick = function(){
 
+    console.log("checkbox:", this.checked);
+
+    btn.disabled = !this.checked;
+
+  };
+
+}
+
+
+    
       btn.addEventListener(
         "click",
         () => {
