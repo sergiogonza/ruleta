@@ -107,89 +107,105 @@ requestAnimationFrame(() => {
 
 window.addEventListener("DOMContentLoaded", () => {
 
-
-
-
-  /* =========================
+/* =========================
    POPUP POLÍTICA DE DATOS
 ========================= */
 
-const popupHTML = `
-<div id="privacyPopup" class="privacy-popup">
-  <div class="privacy-box">
-    <h2>Protección de Datos Personales</h2>
-
-    <p>
-      Al participar en esta promoción autorizas a Bendita Selva
-      a utilizar tus datos personales exclusivamente para fines
-      de contacto, servicio al cliente, promociones y gestión
-      comercial de la marca.
-    </p>
-
-    <p>
-      Tus datos no serán vendidos ni compartidos con terceros.
-    </p>
-
-    <label class="privacy-check">
-      <input type="checkbox" id="acceptPolicy">
-      Acepto la política de tratamiento de datos personales.
-    </label>
-
-    <button id="acceptPolicyBtn" disabled>
-      Aceptar
-    </button>
-  </div>
-</div>
-`;
-
-document.body.insertAdjacentHTML(
-  "beforeend",
-  popupHTML
-);
-
-const acceptCheck =
-document.getElementById("acceptPolicy");
-
-const acceptBtn =
-document.getElementById("acceptPolicyBtn");
-
-acceptCheck.addEventListener(
-  "change",
-  () => {
-    acceptBtn.disabled =
-      !acceptCheck.checked;
-  }
-);
-
-acceptBtn.addEventListener(
-  "click",
-  () => {
-
-    localStorage.setItem(
-      "benditaSelvaPolicy",
-      "accepted"
-    );
-
-    document.getElementById(
-      "privacyPopup"
-    ).style.display = "none";
-
-  }
-);
-
 if(
-  localStorage.getItem(
-    "benditaSelvaPolicy"
-  ) === "accepted"
+  localStorage.getItem("benditaSelvaPolicy")
+  !== "accepted"
 ){
+
+  const popupHTML = `
+  <div id="privacyPopup" class="privacy-popup">
+
+    <div class="privacy-box">
+
+      <h2>Protección de Datos Personales</h2>
+
+      <p>
+        Al participar en esta promoción autorizas a
+        Bendita Selva a utilizar tus datos personales
+        para contacto comercial, atención al cliente,
+        promociones y gestión de tu participación.
+      </p>
+
+      <p>
+        Tus datos no serán vendidos ni compartidos
+        con terceros ajenos a la empresa salvo
+        obligación legal.
+      </p>
+
+      <label class="privacy-check">
+
+        <input
+          type="checkbox"
+          id="acceptPolicy"
+        >
+
+        <span>
+          He leído y acepto la Política de
+          Tratamiento de Datos Personales.
+        </span>
+
+      </label>
+
+      <button
+        id="acceptPolicyBtn"
+        disabled
+      >
+        Aceptar y Continuar
+      </button>
+
+    </div>
+
+  </div>
+  `;
+
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    popupHTML
+  );
+
+  const check =
   document.getElementById(
-    "privacyPopup"
-  ).style.display = "none";
+    "acceptPolicy"
+  );
+
+  const btn =
+  document.getElementById(
+    "acceptPolicyBtn"
+  );
+
+  check.addEventListener(
+    "change",
+    () => {
+
+      btn.disabled =
+      !check.checked;
+
+    }
+  );
+
+  btn.addEventListener(
+    "click",
+    () => {
+
+      localStorage.setItem(
+        "benditaSelvaPolicy",
+        "accepted"
+      );
+
+      document
+      .getElementById(
+        "privacyPopup"
+      )
+      .remove();
+
+    }
+  );
+
 }
-
-
-
-  
 
 const prizes = [
 {
