@@ -522,15 +522,13 @@ if(couponCode){
 
 /* MENSAJE WHATSAPP */
 
-const mensaje =
+const mensaje = `🌿 Hola ${nombre},
 
-`🌿 Hola ${nombre}
+¡Gracias por participar en la ruleta de Bendita Selva!
 
-Declaro que acepto la Política de Tratamiento de Datos Personales de Bendita Selva.
+Te agradecemos por aceptar nuestra Política de Tratamiento de Datos Personales y por autorizar el uso de tus datos exclusivamente para fines de contacto, servicio al cliente, promociones y atención comercial.
 
-Autorizo a Bendita Selva a utilizar mis datos únicamente para fines de contacto, servicio al cliente, promociones y atención comercial.
-
-Mis datos no serán compartidos ni comercializados con terceros.
+Tus datos serán tratados de forma confidencial y no serán vendidos ni compartidos con terceros ajenos a la empresa, salvo obligación legal.
 
 🎉 Premio obtenido:
 ${prize.label}
@@ -538,11 +536,19 @@ ${prize.label}
 🎁 Cupón:
 ${prize.coupon}
 
-Puedes utilizarlo en tu próxima compra.
+Puedes utilizar tu beneficio en tu próxima compra.
+
+📲 Síguenos en nuestras redes:
+
+Instagram: @benditaselva
+Facebook: Bendita Selva
+
+🌿 Mantente al tanto de promociones, novedades y lanzamientos exclusivos.
 
 🌐 https://benditaselva.com
 
-💚 Bendita Selva`;
+💚 Gracias por confiar en Bendita Selva.`;
+  
 
 const numero =
 whatsapp.replace(/\D/g,'');
