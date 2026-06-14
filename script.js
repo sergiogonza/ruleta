@@ -177,7 +177,6 @@ if(popup){
 
 }
 
-const prizes = [
 
 
   
