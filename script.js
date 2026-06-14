@@ -107,105 +107,82 @@ requestAnimationFrame(() => {
 
 window.addEventListener("DOMContentLoaded", () => {
 
+
+
+  
 /* =========================
    POPUP POLÍTICA DE DATOS
 ========================= */
 
-if(
-  localStorage.getItem("benditaSelvaPolicy")
-  !== "accepted"
-){
+const popup =
+document.getElementById("privacyPopup");
 
-  const popupHTML = `
-  <div id="privacyPopup" class="privacy-popup">
+if(popup){
 
-    <div class="privacy-box">
+  if(
+    localStorage.getItem("benditaSelvaPolicy")
+    === "accepted"
+  ){
 
-      <h2>Protección de Datos Personales</h2>
+    popup.style.display = "none";
 
-      <p>
-        Al participar en esta promoción autorizas a
-        Bendita Selva a utilizar tus datos personales
-        para contacto comercial, atención al cliente,
-        promociones y gestión de tu participación.
-      </p>
+    document.body.classList.add(
+      "policy-accepted"
+    );
 
-      <p>
-        Tus datos no serán vendidos ni compartidos
-        con terceros ajenos a la empresa salvo
-        obligación legal.
-      </p>
+  }else{
 
-      <label class="privacy-check">
+    const check =
+    document.getElementById(
+      "acceptPolicy"
+    );
 
-        <input
-          type="checkbox"
-          id="acceptPolicy"
-        >
+    const btn =
+    document.getElementById(
+      "acceptPolicyBtn"
+    );
 
-        <span>
-          He leído y acepto la Política de
-          Tratamiento de Datos Personales.
-        </span>
+    if(check && btn){
 
-      </label>
-
-      <button
-        id="acceptPolicyBtn"
-        disabled
-      >
-        Aceptar y Continuar
-      </button>
-
-    </div>
-
-  </div>
-  `;
-
-  document.body.insertAdjacentHTML(
-    "beforeend",
-    popupHTML
-  );
-
-  const check =
-  document.getElementById(
-    "acceptPolicy"
-  );
-
-  const btn =
-  document.getElementById(
-    "acceptPolicyBtn"
-  );
-
-  check.addEventListener(
-    "change",
-    () => {
-
-      btn.disabled =
-      !check.checked;
-
-    }
-  );
-
-  btn.addEventListener(
-    "click",
-    () => {
-
-      localStorage.setItem(
-        "benditaSelvaPolicy",
-        "accepted"
+      check.addEventListener(
+        "change",
+        () => {
+          btn.disabled =
+          !check.checked;
+        }
       );
 
-      document
-      .getElementById(
-        "privacyPopup"
-      )
-      .remove();
+      btn.addEventListener(
+        "click",
+        () => {
+
+          localStorage.setItem(
+            "benditaSelvaPolicy",
+            "accepted"
+          );
+
+          popup.style.display =
+          "none";
+
+          document.body.classList.add(
+            "policy-accepted"
+          );
+
+        }
+      );
 
     }
-  );
+
+  }
 
 }
+
+const prizes = [
+
+
+  
+
+  
 
 const prizes = [
 {
