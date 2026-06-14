@@ -372,10 +372,19 @@ body{
     width:95px;
   }
 
- .brand img{
-  width:95vw;
-  max-width:650px;
-}
+  .brand img{
+    width:95vw;
+    max-width:650px;
+  }
+
+} 
+
+
+/* ======================
+   POPUP PRIVACIDAD
+====================== */
+
+.privacy-popup{
 
 /* ======================
    POPUP PRIVACIDAD
