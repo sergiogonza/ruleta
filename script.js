@@ -398,24 +398,37 @@ Math.random()*available.length
 }
 
 /* GIRAR */
-
 function spinWheel(){
 
-const nombre =
-document.getElementById("nombre")?.value;
+  if(
+    localStorage.getItem("benditaSelvaPolicy")
+    !== "accepted"
+  ){
 
-const whatsapp =
-document.getElementById("whatsapp")?.value;
+    alert(
+      "Debes aceptar la política de tratamiento de datos."
+    );
 
-if(!nombre || !whatsapp){
+    return;
+  }
 
-alert(
-"Completa tu nombre y WhatsApp"
-);
+  const nombre =
+  document.getElementById("nombre")?.value;
 
-return;
+  const whatsapp =
+  document.getElementById("whatsapp")?.value;
 
-}
+  if(!nombre || !whatsapp){
+
+    alert(
+      "Completa tu nombre y WhatsApp"
+    );
+
+    return;
+
+  }
+
+  
 
 spinBtn.disabled = true;
 
