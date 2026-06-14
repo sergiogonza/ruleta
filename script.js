@@ -107,6 +107,90 @@ requestAnimationFrame(() => {
 
 window.addEventListener("DOMContentLoaded", () => {
 
+
+
+
+  /* =========================
+   POPUP POLÍTICA DE DATOS
+========================= */
+
+const popupHTML = `
+<div id="privacyPopup" class="privacy-popup">
+  <div class="privacy-box">
+    <h2>Protección de Datos Personales</h2>
+
+    <p>
+      Al participar en esta promoción autorizas a Bendita Selva
+      a utilizar tus datos personales exclusivamente para fines
+      de contacto, servicio al cliente, promociones y gestión
+      comercial de la marca.
+    </p>
+
+    <p>
+      Tus datos no serán vendidos ni compartidos con terceros.
+    </p>
+
+    <label class="privacy-check">
+      <input type="checkbox" id="acceptPolicy">
+      Acepto la política de tratamiento de datos personales.
+    </label>
+
+    <button id="acceptPolicyBtn" disabled>
+      Aceptar
+    </button>
+  </div>
+</div>
+`;
+
+document.body.insertAdjacentHTML(
+  "beforeend",
+  popupHTML
+);
+
+const acceptCheck =
+document.getElementById("acceptPolicy");
+
+const acceptBtn =
+document.getElementById("acceptPolicyBtn");
+
+acceptCheck.addEventListener(
+  "change",
+  () => {
+    acceptBtn.disabled =
+      !acceptCheck.checked;
+  }
+);
+
+acceptBtn.addEventListener(
+  "click",
+  () => {
+
+    localStorage.setItem(
+      "benditaSelvaPolicy",
+      "accepted"
+    );
+
+    document.getElementById(
+      "privacyPopup"
+    ).style.display = "none";
+
+  }
+);
+
+if(
+  localStorage.getItem(
+    "benditaSelvaPolicy"
+  ) === "accepted"
+){
+  document.getElementById(
+    "privacyPopup"
+  ).style.display = "none";
+}
+
+
+
+  
+
 const prizes = [
 {
 label:"5%",
@@ -371,6 +455,11 @@ spinBtn.disabled = false;
 
 }
 
+
+
+
+
+  
 /* MOSTRAR PREMIO */
 
 function showPrize(
@@ -389,24 +478,17 @@ const couponCode =
 document.getElementById("couponCode");
 
 if(resultBox){
-
-resultBox.style.display =
-"block";
-
+  resultBox.style.display = "block";
 }
 
 if(resultTitle){
-
-resultTitle.innerHTML =
-`🎉 ¡Ganaste ${prize.label}!`;
-
+  resultTitle.innerHTML =
+  `🎉 ¡Ganaste ${prize.label}!`;
 }
 
 if(couponCode){
-
-couponCode.innerHTML =
-prize.coupon;
-
+  couponCode.innerHTML =
+  prize.coupon;
 }
 
 /* MENSAJE WHATSAPP */
@@ -415,24 +497,26 @@ const mensaje =
 
 `🌿 Hola ${nombre}
 
-¡Felicitaciones!
+Declaro que acepto la Política de Tratamiento de Datos Personales de Bendita Selva.
 
-Acabas de ganar ${prize.label}
-en la ruleta de Bendita Selva.
+Autorizo a Bendita Selva a utilizar mis datos únicamente para fines de contacto, servicio al cliente, promociones y atención comercial.
+
+Mis datos no serán compartidos ni comercializados con terceros.
+
+🎉 Premio obtenido:
+${prize.label}
 
 🎁 Cupón:
 ${prize.coupon}
 
 Puedes utilizarlo en tu próxima compra.
 
-Te esperamos en:
-https://benditaselva.com
+🌐 https://benditaselva.com
 
 💚 Bendita Selva`;
 
 const numero =
-whatsapp
-.replace(/\D/g,'');
+whatsapp.replace(/\D/g,'');
 
 window.open(
 `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`,
@@ -440,8 +524,7 @@ window.open(
 );
 
 }
-
-
+  
 
 
 /* COPIAR CUPON */
